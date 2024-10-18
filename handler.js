@@ -1,7 +1,12 @@
-const { createItem } = require("./functions/createItem");
-const { getItems } = require("./functions/getItems");
+const { createMission, getMissions } = require('./missions');
+const { getPlanets } = require('./planets');
+const { getPeople } = require('./people');
+const { getFilms } = require('./films');
 
 module.exports = {
-  createItem,
-  getItems,
+  createMission,
+  getMissions,
+  getPlanets,
+  getPeople,
+  getFilms
 };

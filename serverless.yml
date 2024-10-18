@@ -10,25 +10,43 @@ provider:
   runtime: nodejs20.x
 
 functions:  
-  createItem:
-    handler: handler.createItem
+  planets:
+    handler: handler.getPlanets
     events:
       - httpApi:
-          path: items
-          method: post
-  getItems:
-    handler: handler.getItems
-    events:
-      - httpApi:
-          path: items
+          path: /planets
           method: get
+  people:
+    handler: handler.getPeople
+    events:
+      - httpApi:
+          path: /people
+          method: get
+  films:
+    handler: handler.getFilms
+    events:
+      - httpApi:
+          path: /films
+          method: get
+  getMissions:
+    handler: handler.getMissions
+    events:
+      - httpApi:
+          path: /missions
+          method: get
+  createMission:
+    handler: handler.createMission
+    events:
+      - httpApi:
+          path: /missions
+          method: post
 
 resources:
   Resources:
     ItemsTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: ${self:service}-items
+        TableName: ${self:service}-missions
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S

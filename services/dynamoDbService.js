@@ -2,18 +2,27 @@ const AWS = require('aws-sdk');
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 const TableName = process.env.DYNAMODB_TABLE;
 
-module.exports.setItem = async (item) => {
+module.exports.setMission = async (mission) => {
     const params = {
         TableName,
-        Item: item
+        Item: mission
     };
-    return dynamoDb.put(params).promise();
+    try {
+        return await dynamoDb.put(params).promise();
+    } catch (error) {
+        throw new Error('Error saving mission to DynamoDB');
+    }
 }
 
-module.exports.getItems = async () => {
+module.exports.getMissions = async () => {
     const params = {
         TableName
     };
-    const result = await dynamoDb.scan(params).promise();
-    return result.Items;
+    try {
+        const result = await dynamoDb.scan(params).promise();
+        return result.Items;
+    } catch (error) {
+        throw new Error('Error retrieving missions from DynamoDB');
+    }
+    
 }
