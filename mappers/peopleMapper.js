@@ -1,4 +1,4 @@
-export const peopleMapper = (person) => {
+const peopleMapper = (person) => {
     return {
         nombre: person.name,
         altura: person.height,
@@ -17,4 +17,8 @@ export const peopleMapper = (person) => {
         fecha_edicion: person.edited,
         url: person.url
     };
+};
+
+module.exports = {
+    peopleMapper
 };

@@ -1,4 +1,4 @@
-export const planetMapper = (planet) => {
+const planetMapper = (planet) => {
     return {
         nombre: planet.name,
         periodo_rotacion: planet.rotation_period,
@@ -15,4 +15,8 @@ export const planetMapper = (planet) => {
         fecha_edicion: planet.edited,
         url: planet.url
     }
+};
+
+module.exports = {
+    planetMapper
 };

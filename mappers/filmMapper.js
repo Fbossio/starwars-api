@@ -1,4 +1,4 @@
-export const filmMapper = (film) => {
+const filmMapper = (film) => {
     return {
         titulo: film.title,
         episodio: film.episode_id,
@@ -16,3 +16,7 @@ export const filmMapper = (film) => {
         url: film.url
     }
 }
+
+module.exports = {
+    filmMapper
+};

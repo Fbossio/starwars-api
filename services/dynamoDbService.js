@@ -2,7 +2,7 @@ const AWS = require('aws-sdk');
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 const TableName = process.env.DYNAMODB_TABLE;
 
-module.exports.setMission = async (mission) => {
+const setMission = async (mission) => {
     const params = {
         TableName,
         Item: mission
@@ -14,7 +14,7 @@ module.exports.setMission = async (mission) => {
     }
 }
 
-module.exports.getMissions = async () => {
+const getMissions = async () => {
     const params = {
         TableName
     };
@@ -26,3 +26,8 @@ module.exports.getMissions = async () => {
     }
     
 }
+
+module.exports = {
+    setMission,
+    getMissions
+};
