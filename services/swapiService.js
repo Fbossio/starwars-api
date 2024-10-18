@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const fetchData = async (resource, mapper) => {
+const fetchListData = async (resource, mapper) => {
     const baseUrl = 'https://swapi.py4e.com/api';
     let nextUrl = `${baseUrl}/${resource}`;
     let allResults = [];
@@ -20,5 +20,5 @@ const fetchData = async (resource, mapper) => {
 };
 
 module.exports = {
-    fetchData
+    fetchListData
 };

@@ -1,5 +1,10 @@
+const { extractId } = require('../utils/extractId');
+
 const planetMapper = (planet) => {
+    
+    const id = extractId(planet.url);
     return {
+        id,
         nombre: planet.name,
         periodo_rotacion: planet.rotation_period,
         periodo_orbital: planet.orbital_period,

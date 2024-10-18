@@ -1,5 +1,10 @@
+const { extractId } = require('../utils/extractId');
+
 const peopleMapper = (person) => {
+    // Extraer el id a partir del url
+    const id = extractId(person.url);
     return {
+        id,
         nombre: person.name,
         altura: person.height,
         peso: person.mass,

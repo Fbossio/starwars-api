@@ -1,5 +1,10 @@
+const { extractId } = require('../utils/extractId');
+
 const filmMapper = (film) => {
+    // Extraer el id a partir del url
+    const id = extractId(film.url);
     return {
+        id,
         titulo: film.title,
         episodio: film.episode_id,
         apertura: film.opening_crawl,
