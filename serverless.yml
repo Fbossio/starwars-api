@@ -16,6 +16,13 @@ functions:
       - httpApi:
           path: /planets
           method: get
+  planetById:
+    handler: handler.getPlanet
+    events:
+      - httpApi:
+          path: /planets/{id}
+          method: get
+
   people:
     handler: handler.getPeople
     events:

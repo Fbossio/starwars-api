@@ -1,7 +1,8 @@
 const axios = require('axios');
 
-const fetchListData = async (resource, mapper) => {
-    const baseUrl = 'https://swapi.py4e.com/api';
+const baseUrl = 'https://swapi.py4e.com/api';
+
+const fetchListData = async (resource, mapper) => {    
     let nextUrl = `${baseUrl}/${resource}`;
     let allResults = [];
 
@@ -19,6 +20,23 @@ const fetchListData = async (resource, mapper) => {
     }
 };
 
+const fetchResourceById = async (resource, id, mapper) => {
+    if (!id) {
+        throw new Error(`ID is required to fetch ${resource}`);
+    }
+
+    const url = `${baseUrl}/${resource}/${id}`;
+    
+    try {
+        const response = await axios.get(url);
+        return mapper(response.data);
+    } catch (error) {
+        throw new Error(`Error fetching ${resource} with ID ${id}: ${error.message}`);
+    }
+};
+
+
 module.exports = {
-    fetchListData
+    fetchListData,
+    fetchResourceById
 };

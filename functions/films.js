@@ -1,5 +1,8 @@
+const { fetchListData } = require('../services/swapiService');
+const { filmMapper } = require('../mappers/filmMapper');
+
 const getFilms = async () => {
-    console.log('Getting films...');
+    return await fetchListData('films', filmMapper);
 };
 
 module.exports = {
