@@ -79,3 +79,20 @@ aws configure
 serverless deploy
 
 ```
+
+## Accede a la API desplegada en AWS
+
+La API se encuentra desplegada en AWS. Puedes hacer solicutudes a los siguientes endpoints:
+
+```bash
+  GET - https://k0ccczngze.execute-api.us-east-1.amazonaws.com/dev/planets
+  GET - https://k0ccczngze.execute-api.us-east-1.amazonaws.com/dev/planets/{id}
+  GET - https://k0ccczngze.execute-api.us-east-1.amazonaws.com/dev/people
+  GET - https://k0ccczngze.execute-api.us-east-1.amazonaws.com/dev/people/{id}
+  GET - https://k0ccczngze.execute-api.us-east-1.amazonaws.com/dev/films
+  GET - https://k0ccczngze.execute-api.us-east-1.amazonaws.com/dev/films/{id}
+  GET - https://k0ccczngze.execute-api.us-east-1.amazonaws.com/dev/missions
+  GET - https://k0ccczngze.execute-api.us-east-1.amazonaws.com/dev/missions/{id}
+  POST - https://k0ccczngze.execute-api.us-east-1.amazonaws.com/dev/missions
+
+```
