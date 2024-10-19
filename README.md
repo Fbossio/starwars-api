@@ -42,7 +42,7 @@ Star Wars API es una aplicación desarrollada con el Serverless Framework que pe
 
 ## Requisitos
 
-- Node.js (v14 o superior)
+- Node.js (v20)
 - Serverless Framework instalado globalmente (`npm install -g serverless`)
 - AWS CLI configurado con las credenciales adecuadas
 - Una cuenta en AWS con permisos para crear recursos en Lambda, API Gateway y S3
