@@ -10,60 +10,72 @@ authorName: 'Serverless, Inc.'
 authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4'
 -->
 
-# Serverless Framework Node HTTP API on AWS
+# Star Wars API
 
-This template demonstrates how to make a simple HTTP API with Node.js running on AWS Lambda and API Gateway using the Serverless Framework.
+Star Wars API es una aplicación desarrollada con el Serverless Framework que permite consultar información sobre planetas, personas y películas del universo de Star Wars, obtenida desde [SWAPI](https://swapi.dev/). Los atributos se mapean del inglés al español para facilitar su uso. Además, esta API permite la creación de misiones y la consulta tanto del listado de misiones como de misiones específicas mediante su ID.
 
-This template does not include any kind of persistence (database). For more advanced examples, check out the [serverless/examples repository](https://github.com/serverless/examples/) which includes Typescript, Mongo, DynamoDB and other examples.
+## Funcionalidades
 
-## Usage
+- Consultar planetas, personas y películas de Star Wars mapeando los atributos al español.
+- Crear nuevas misiones.
+- Consultar un listado de misiones.
+- Consultar una misión específica por su ID.
 
-### Deployment
+## Endpoints
 
-In order to deploy the example, you need to run the following command:
+### Planetas
+- `GET /planets`: Obtiene una lista de planetas del universo de Star Wars.
+- `GET /planets/{id}`: Obtiene información de un planeta específico por ID.
+
+### Personas
+- `GET /people`: Obtiene una lista de personas del universo de Star Wars.
+- `GET /people/{id}`: Obtiene información de una persona específica por ID.
+
+### Películas
+- `GET /films`: Obtiene una lista de películas del universo de Star Wars.
+- `GET /films/{id}`: Obtiene información de una película específica por ID.
+
+### Misiones
+- `POST /missions`: Crea una nueva misión.
+- `GET /missions`: Obtiene una lista de todas las misiones creadas.
+- `GET /missions/{id}`: Obtiene información de una misión específica por ID.
+
+## Requisitos
+
+- Node.js (v14 o superior)
+- Serverless Framework instalado globalmente (`npm install -g serverless`)
+- AWS CLI configurado con las credenciales adecuadas
+- Una cuenta en AWS con permisos para crear recursos en Lambda, API Gateway y S3
+
+## Instalación y Despliegue
+
+Sigue estos pasos para descargar, instalar las dependencias y desplegar este proyecto en AWS:
+
+1. Clona este repositorio en tu máquina local:
+
+```bash
+git clone https://github.com/Fbossio/starwars-api.git
+cd starwars-api
 
 ```
+
+2. Instala las dependencias necesarias:
+
+```bash
+npm install
+
+```
+
+3. Configura tus credenciales de AWS:
+
+```bash
+aws configure
+
+```
+
+4. Despliega la aplicación en AWS utilizando el Serverless Framework:
+
+```bash
 serverless deploy
-```
-
-After running deploy, you should see output similar to:
 
 ```
-Deploying "serverless-http-api" to stage "dev" (us-east-1)
-
-✔ Service deployed to stack serverless-http-api-dev (91s)
-
-endpoint: GET - https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/
-functions:
-  hello: serverless-http-api-dev-hello (1.6 kB)
-```
-
-_Note_: In current form, after deployment, your API is public and can be invoked by anyone. For production deployments, you might want to configure an authorizer. For details on how to do that, refer to [HTTP API (API Gateway V2) event docs](https://www.serverless.com/framework/docs/providers/aws/events/http-api).
-
-### Invocation
-
-After successful deployment, you can call the created application via HTTP:
-
-```
-curl https://xxxxxxx.execute-api.us-east-1.amazonaws.com/
-```
-
-Which should result in response similar to:
-
-```json
-{ "message": "Go Serverless v4! Your function executed successfully!" }
-```
-
-### Local development
-
-The easiest way to develop and test your function is to use the `dev` command:
-
-```
-serverless dev
-```
-
-This will start a local emulator of AWS Lambda and tunnel your requests to and from AWS Lambda, allowing you to interact with your function as if it were running in the cloud.
-
-Now you can invoke the function as before, but this time the function will be executed locally. Now you can develop your function locally, invoke it, and see the results immediately without having to re-deploy.
-
-When you are done developing, don't forget to run `serverless deploy` to deploy the function to the cloud.
