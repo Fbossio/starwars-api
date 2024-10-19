@@ -65,15 +65,24 @@ cd starwars-api
 npm install
 
 ```
+3. Ejecuta los test automatizados:
 
-3. Configura tus credenciales de AWS:
+Ejecuta los test unitarios con el siguiente comando:
+
+```bash
+npm run test
+
+```
+
+
+4. Configura tus credenciales de AWS:
 
 ```bash
 aws configure
 
 ```
 
-4. Despliega la aplicación en AWS utilizando el Serverless Framework:
+5. Despliega la aplicación en AWS utilizando el Serverless Framework:
 
 ```bash
 serverless deploy

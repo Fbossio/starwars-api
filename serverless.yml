@@ -12,13 +12,14 @@ provider:
   environment:
     TableName: ${self:service}-missions
   iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - dynamodb:PutItem
-        - dynamodb:GetItem
-        - dynamodb:Scan
-      Resource:
-        - arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:service}-missions
+  - Effect: Allow
+    Action:
+      - dynamodb:PutItem
+      - dynamodb:GetItem
+      - dynamodb:Scan
+      - dynamodb:DescribeTable
+    Resource:
+      - arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:service}-missions
 
 functions:  
   planets:
