@@ -2,7 +2,19 @@ const { fetchListData, fetchResourceById } = require('../services/swapiService')
 const { planetMapper } = require('../mappers/planetMapper');
 
 const getPlanets = async () => {
-    return await fetchListData('planets', planetMapper);
+    try {
+        const planets = await fetchListData('planets', planetMapper);
+        return {
+            statusCode: 200,
+            body: JSON.stringify(planets),
+        };
+    } catch (error) {
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ message: error.message }),
+        };
+    }
+    
 };
 
 const getPlanet = async (event) => {
