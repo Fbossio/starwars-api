@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "aws-sdk": "^2.1691.0",
-    "axios": "^1.7.7"
+    "axios": "^1.7.7",
+    "uuid": "^10.0.0"
   }
 }
