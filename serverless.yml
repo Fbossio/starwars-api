@@ -24,60 +24,75 @@ functions:
   planets:
     handler: handler.getPlanets
     events:
-      - httpApi:
+      - http:
           path: /planets
           method: get
   planetById:
     handler: handler.getPlanet
     events:
-      - httpApi:
+      - http:
           path: /planets/{id}
           method: get
 
   people:
     handler: handler.getPeople
     events:
-      - httpApi:
+      - http:
           path: /people
           method: get
   personById:
     handler: handler.getPerson
     events:
-      - httpApi:
+      - http:
           path: /people/{id}
           method: get
 
   films:
     handler: handler.getFilms
     events:
-      - httpApi:
+      - http:
           path: /films
           method: get
   filmById:
     handler: handler.getFilm
     events:
-      - httpApi:
+      - http:
           path: /films/{id}
           method: get
 
   getMissions:
     handler: handler.listMissions
     events:
-      - httpApi:
+      - http:
           path: /missions
           method: get
   getMission:
     handler: handler.getMission
     events:
-      - httpApi:
+      - http:
           path: /missions/{id}
           method: get
   createMission:
     handler: handler.createMission
     events:
-      - httpApi:
+      - http:
           path: /missions
           method: post
+
+  swaggerUI:
+    handler: functions/swagger.swaggerUI
+    events:
+      - http:
+          path: docs
+          method: get
+          cors: true
+  getSwaggerDocument:
+    handler: functions/swagger.getSwaggerDocument
+    events:
+      - http:
+          path: docs/swagger.yaml
+          method: get
+          cors: true
 
 resources:
   Resources:
@@ -92,3 +107,7 @@ resources:
           - AttributeName: id
             KeyType: HASH
         BillingMode: PAY_PER_REQUEST
+
+package: 
+  include:
+    - swagger.yaml
