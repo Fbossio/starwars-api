@@ -35,13 +35,20 @@ functions:
       - httpApi:
           path: /people/{id}
           method: get
-          
+
   films:
     handler: handler.getFilms
     events:
       - httpApi:
           path: /films
           method: get
+  filmById:
+    handler: handler.getFilm
+    events:
+      - httpApi:
+          path: /films/{id}
+          method: get
+
   getMissions:
     handler: handler.getMissions
     events:
