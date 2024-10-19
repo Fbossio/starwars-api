@@ -2,7 +2,19 @@ const { fetchListData, fetchResourceById } = require('../services/swapiService')
 const { peopleMapper } = require('../mappers/peopleMapper');
 
 const getPeople = async () => {
-    return await fetchListData('people', peopleMapper);
+    try {
+        const people = await fetchListData('people', peopleMapper);
+        return {
+            statusCode: 200,
+            body: JSON.stringify(people),
+        };
+    } catch (error) {
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ message: error.message }),
+        };
+    }
+    
 }
 
 const getPerson = async (event) => {
