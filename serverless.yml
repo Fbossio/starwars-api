@@ -66,6 +66,12 @@ functions:
       - httpApi:
           path: /missions
           method: get
+  getMission:
+    handler: handler.getMission
+    events:
+      - httpApi:
+          path: /missions/{id}
+          method: get
   createMission:
     handler: handler.createMission
     events:

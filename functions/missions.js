@@ -1,4 +1,4 @@
-const { getMissions, setMission } = require('../services/dynamoDbService');
+const { getMissions, setMission, getMissionById } = require('../services/dynamoDbService');
 const { validateMission } = require('../validators/missionValidator')
 const { v4: uuidv4 } = require('uuid');
 
@@ -46,7 +46,30 @@ const createMission = async (event) => {
     }
 }
 
+const getMission = async (event) => {
+    const { id } = event.pathParameters;
+    if (!id) {
+        return {
+            statusCode: 400,
+            body: JSON.stringify({ message: 'ID is required' }),
+        };
+    }
+    try {
+        const mission = await getMissionById(id);
+        return {
+            statusCode: 200,
+            body: JSON.stringify(mission),
+        };
+    } catch (error) {
+        return {
+            statusCode: 404,
+            body: JSON.stringify({ message: error.message }),
+        };
+    }
+};
+
 module.exports = {
     listMissions,
-    createMission
+    createMission,
+    getMission
 };

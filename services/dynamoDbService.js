@@ -28,7 +28,25 @@ const getMissions = async () => {
     
 }
 
+const getMissionById = async (id) => {
+    const params = {
+        TableName: TableName,
+        Key: { id }
+    };
+
+    try {
+        const result = await dynamoDb.get(params).promise();
+        if (!result.Item) {
+            throw new Error(`Mission with ID ${id} not found`);
+        }
+        return result.Item;
+    } catch (error) {
+        throw new Error('Error retrieving mission from DynamoDB');
+    }
+};
+
 module.exports = {
     setMission,
-    getMissions
+    getMissions,
+    getMissionById
 };
